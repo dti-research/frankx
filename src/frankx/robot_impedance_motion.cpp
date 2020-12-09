@@ -91,12 +91,12 @@ bool Robot::move(const Affine& frame, ImpedanceMotion& motion, MotionData& data)
         std::array<double, 7> tau_d_array{};
         Eigen::VectorXd::Map(&tau_d_array[0], 7) = tau_d;
 
-#ifdef WITH_PYTHON
+/*#ifdef WITH_PYTHON
         if (stop_at_python_signal && Py_IsInitialized() && PyErr_CheckSignals() == -1) {
             motion.is_active = false;
             return franka::MotionFinished(franka::Torques(tau_d_array));
         }
-#endif
+#endif*/
 
         if (motion.should_finish) {
             motion.is_active = false;

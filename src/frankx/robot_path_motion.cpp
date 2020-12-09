@@ -43,11 +43,11 @@ bool Robot::move(const Affine& frame, PathMotion motion, MotionData& data) {
     auto motion_generator = [&](const franka::RobotState& robot_state, franka::Duration period) -> franka::CartesianPose {
         time += period.toSec();
 
-#ifdef WITH_PYTHON
+/*#ifdef WITH_PYTHON
         if (stop_at_python_signal && Py_IsInitialized() && PyErr_CheckSignals() == -1) {
             stop();
         }
-#endif
+#endif*/
 
         const int steps = std::max<int>(period.toMSec(), 1);
         trajectory_index += steps;

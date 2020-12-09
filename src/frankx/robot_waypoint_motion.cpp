@@ -88,11 +88,11 @@ bool Robot::move(const Affine& frame, WaypointMotion& motion, MotionData& data) 
                     new_motion = true;
                     current_motion = *(reaction.waypoint_motion.value());
                 }
-#ifdef WITH_PYTHON
+/*#ifdef WITH_PYTHON
                 else {
                     stop();
                 }
-#endif
+#endif*/
 
                 if (new_motion) {
                     waypoint_iterator = current_motion.waypoints.begin();
@@ -122,11 +122,11 @@ bool Robot::move(const Affine& frame, WaypointMotion& motion, MotionData& data) 
             }
         }
 
-#ifdef WITH_PYTHON
+/*#ifdef WITH_PYTHON
         if (stop_at_python_signal && Py_IsInitialized() && PyErr_CheckSignals() == -1) {
             stop();
         }
-#endif
+#endif*/
 
         const int steps = std::max<int>(period.toMSec(), 1);
         for (int i = 0; i < steps; i++) {

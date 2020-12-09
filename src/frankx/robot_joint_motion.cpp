@@ -44,11 +44,11 @@ bool Robot::move(const Affine& frame, JointMotion motion, MotionData& data) {
             input_para.max_acceleration *= acceleration_rel * data.acceleration_rel;
         }
 
-#ifdef WITH_PYTHON
+/*#ifdef WITH_PYTHON
         if (stop_at_python_signal && Py_IsInitialized() && PyErr_CheckSignals() == -1) {
             stop();
         }
-#endif
+#endif*/
 
         const int steps = std::max<int>(period.toMSec(), 1);
         for (int i = 0; i < steps; i++) {
